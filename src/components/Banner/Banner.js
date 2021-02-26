@@ -3,6 +3,7 @@ import axios from '../../axios';
 import requests from '../../requests';
 
 import './Banner.css'
+import './BannerMediaQueries.css'
 
 const Banner = () => {
     const [movie, setMovie] = useState([]);
