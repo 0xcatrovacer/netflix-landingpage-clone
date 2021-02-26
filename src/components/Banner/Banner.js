@@ -31,7 +31,7 @@ const Banner = () => {
             style={{
                 backgroundSize: "cover",
                 backgroundImage: `url(
-                    ${baseURL}${movie.backdrop_path})`
+                    ${baseURL}${movie.backdrop_path})`,
             }}>
             <div className="BannerContents">
                 <h1 className="BannerTitle">
@@ -46,6 +46,8 @@ const Banner = () => {
                     {truncate(movie.overview, 200)}
                 </h1>
             </div>
+
+            <div className="BannerFadeBottom"></div>
         </header>
     )
 }
