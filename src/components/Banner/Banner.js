@@ -20,6 +20,10 @@ const Banner = () => {
         fetchData();
     }, []);
 
+    function truncate(str, n) {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    }
+
     const baseURL = "https://image.tmdb.org/t/p/original/"
 
     return (
@@ -39,7 +43,7 @@ const Banner = () => {
                 </div>
 
                 <h1 className="BannerDescription">
-                    {movie.overview}
+                    {truncate(movie.overview, 200)}
                 </h1>
             </div>
         </header>
