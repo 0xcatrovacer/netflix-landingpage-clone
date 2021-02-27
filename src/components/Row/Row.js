@@ -7,6 +7,7 @@ const baseURL = "https://image.tmdb.org/t/p/original/"
 
 const Row = ({ title, fetchUrl, isLargeRow }) => {
     const [movies, setMovies] = useState([])
+    const ref = React.createRef();
 
     useEffect(() => {
 
@@ -19,21 +20,29 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
 
     }, [fetchUrl]);
 
+    const handleScroll = (scrollOffset) => {
+        ref.current.scrollLeft += scrollOffset;
+    };
+
 
     return (
         <div className="Row">
 
             <h2 className="RowTitle">{title}</h2>
-            <div className='RowPosters' >
-                {movies.map((movie) => (
-                    <img
-                        key={movie.id}
-                        className={`RowPoster ${isLargeRow && 'RowPosterLarge'}`}
-                        src={`${baseURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
-                ))}
+            <div className='SliderContainer'>
+                <span className="angleLeft sliderButton" onClick={() => handleScroll(-1300)} >&#10094;</span>
+                <div className='RowPosters' ref={ref} >
+                    {movies.map((movie) => (
+                        <img
+                            key={movie.id}
+                            className={`RowPoster ${isLargeRow && 'RowPosterLarge'}`}
+                            src={`${baseURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
+                    ))}
+                </div>
+                <span className="angleRight sliderButton" onClick={() => handleScroll(1300)}>&#10095;</span>
             </div>
-
         </div>
+
     )
 }
 
