@@ -30,7 +30,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
 
             <h2 className="RowTitle">{title}</h2>
             <div className='SliderContainer'>
-                <span className="angleLeft sliderButton" onClick={() => handleScroll(-1300)} >&#10094;</span>
+                <span className="angleLeft sliderButton" onClick={() => handleScroll(-800)} >&#10094;</span>
                 <div className='RowPosters' ref={ref} >
                     {movies.map((movie) => (
                         <img
@@ -39,7 +39,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
                             src={`${baseURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt={movie.name} />
                     ))}
                 </div>
-                <span className="angleRight sliderButton" onClick={() => handleScroll(1300)}>&#10095;</span>
+                <span className="angleRight sliderButton" onClick={() => handleScroll(800)}>&#10095;</span>
             </div>
         </div>
 
